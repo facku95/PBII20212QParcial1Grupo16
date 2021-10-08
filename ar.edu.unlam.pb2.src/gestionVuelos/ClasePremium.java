@@ -5,8 +5,8 @@ private Integer cantidad_bebidas,cantidad_comidas,cantidad_tragos;
 private Double cuenta;
 
 public ClasePremium(Integer id, Integer asiento, Double precio, String destino, Aerolinea aerolinea,
-		Pasajero pasajero,Avion avion,Integer bebidas,Integer comidas,Integer tragos,Double cuenta) {
-	super(id, asiento, precio, destino, aerolinea, pasajero,avion);
+		Pasajero pasajero,Avion avion,Vuelo vuelo,Integer bebidas,Integer comidas,Integer tragos,Double cuenta) {
+	super(id, asiento, precio, destino, aerolinea, pasajero,avion,vuelo);
 	this.cantidad_bebidas=bebidas;
 	this.cantidad_comidas=comidas;
 	this.cantidad_tragos=tragos;

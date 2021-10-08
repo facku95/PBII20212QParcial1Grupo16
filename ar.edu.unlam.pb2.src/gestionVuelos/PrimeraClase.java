@@ -6,8 +6,8 @@ private Integer cantidad_bebidas, cantidad_comidas;
 
 
 public PrimeraClase(Integer id, Integer asiento, Double precio, String destino,
-	Aerolinea aerolinea,Avion avion,Pasajero pasajero,Integer bebidas,Integer comidas) {
-	super(id, asiento, precio, destino, aerolinea, pasajero,avion);
+	Aerolinea aerolinea,Avion avion,Vuelo vuelo,Pasajero pasajero,Integer bebidas,Integer comidas) {
+	super(id, asiento, precio, destino, aerolinea, pasajero,avion,vuelo);
 	this.cantidad_bebidas=bebidas;
 	this.cantidad_comidas=comidas;
 }
