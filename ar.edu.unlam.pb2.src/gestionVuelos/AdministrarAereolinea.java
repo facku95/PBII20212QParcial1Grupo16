@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class AdministrarAereolinea {
 
 	public static void main(String[] args) {
-
+		///todos los commits a nombre de unknow fueron hechos por Angel Facundo Santillan
 		Scanner scan=new Scanner(System.in); 
 		///variables locales///
 		Integer id_boleto,asiento_boleto,id_vuelo,dni_pasajero;
