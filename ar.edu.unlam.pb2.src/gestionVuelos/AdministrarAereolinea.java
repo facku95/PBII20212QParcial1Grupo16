@@ -271,11 +271,12 @@ public class AdministrarAereolinea {
 							}
 					   		default:System.out.println("No existe clase: ");
 					   		} 	
-					case 0:						
+					case 3:						
 					}
-				
+
 				break;
 			
+		
 			case 0:
 				break;
 				

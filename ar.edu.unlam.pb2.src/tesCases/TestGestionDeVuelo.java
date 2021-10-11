@@ -15,15 +15,15 @@ import gestionVuelos.Vuelo;
 
 public class TestGestionDeVuelo {
 	Aerolinea aerolinea = new Aerolinea("Flybondi", 372453672);
-	Avion miAvion = new Avion("Boeing 737", 200);
+	Avion nuevoAvion = new Avion("Boeing 737", 200);
 	Pasajero[] misPasajeros = { new Pasajero("Juan", "Perez", 12345678) };
-	Vuelo miVuelo = new Vuelo(1234, "Sydey", miAvion);
+	Vuelo miVuelo = new Vuelo(1234, "Sydey", nuevoAvion);
 
 	@Test
 	public void test01_queMeVerifiSiLaCapacidadDelAvionCoincideConLaCapacidadDelVuelo() {
-		Vuelo vuelo = new Vuelo(1234, "Sydey", miAvion);
+		Vuelo vuelo = new Vuelo(1234, "Sydey", nuevoAvion);
 		Boolean resultadoEsperado = true;
-		Boolean capacidadDisponible = vuelo.verificarCapacidadAvionDelVuelo(miAvion);
+		Boolean capacidadDisponible = vuelo.verificarCapacidadAvionDelVuelo(nuevoAvion);
 
 		assertEquals(resultadoEsperado, capacidadDisponible);
 	}
@@ -32,7 +32,7 @@ public class TestGestionDeVuelo {
 	public void test02_queVerifiqueQueHayAsientoDisponible() {
 		Pasajero nuevoPasajero = new Pasajero("Natalia", "Perez", 87654321);
 		Boolean valorEsperado = true;
-		Boolean seVerificaCompra = miVuelo.verificarDisponibilidadAsientoDelVuelo(miAvion, nuevoPasajero);
+		Boolean seVerificaCompra = miVuelo.verificarDisponibilidadAsientoDelVuelo(nuevoAvion, nuevoPasajero);
 
 		assertEquals(valorEsperado, seVerificaCompra);
 	}
@@ -50,9 +50,9 @@ public class TestGestionDeVuelo {
 // Este metodo me permitiria conocer si puedo registrar un vuelo con determinado avion
 	@Test
 	public void test04_queVeriqueQueLaCapacidadDelAvionNoCoincideConLaDelVuelo() {
-		Vuelo vuelo = new Vuelo(1234, "Sydey", miAvion);
+		Vuelo vuelo = new Vuelo(1234, "Sydey", nuevoAvion);
 		Boolean valorEsperado = false;
-		Boolean capacidadDisponible = vuelo.verificarCapacidadAvionDelVuelo(miAvion);
+		Boolean capacidadDisponible = vuelo.verificarCapacidadAvionDelVuelo(nuevoAvion);
 
 		assertEquals(valorEsperado, capacidadDisponible);
 	}
@@ -88,7 +88,7 @@ public class TestGestionDeVuelo {
 	}
 	@Test
 	public void test07_queValideTipoDeBoletoPrimerClase() {
-//		Aerolinea aerolinea = new Aerolinea("Flybondi", 372453672);
+
 		Pasajero pasajero = new Pasajero("Alejandra", "Rodriguez", 38345678);
 		Avion avion = new Avion("Boeing 11", 60);
 		Vuelo vuelo = new Vuelo(011, "Mendoza", avion);
@@ -115,7 +115,7 @@ public class TestGestionDeVuelo {
 	@Test
 	public void test09_queValideTipoDeBoletoEconomico() {
 		Pasajero pasajero = new Pasajero("Axel", "Perez", 39345678);
-		Economica boletoEconomico = new Economica(987, 38, 235000.99, "Milan",aerolinea,pasajero, miAvion, miVuelo, TipoBoleto.ECONOMICO, "Valija de mano");
+		Economica boletoEconomico = new Economica(987, 38, 235000.99, "Milan",aerolinea,pasajero, nuevoAvion, miVuelo, TipoBoleto.ECONOMICO, "Valija de mano");
 		
 		TipoBoleto boletoEco = TipoBoleto.ECONOMICO;
 		
@@ -124,7 +124,7 @@ public class TestGestionDeVuelo {
 	@Test
 	public void test10_queCalculeElPrecioDeBoletoEconomicoSiSuperaMonto() {
 		Pasajero pasajero = new Pasajero("Axel", "Perez", 39345678);
-		Economica boletoEconomico = new Economica(987, 38, 235000.99, "Milan",aerolinea,pasajero, miAvion, miVuelo, TipoBoleto.ECONOMICO, "Valija de mano");
+		Economica boletoEconomico = new Economica(987, 38, 235000.99, "Milan",aerolinea,pasajero, nuevoAvion, miVuelo, TipoBoleto.ECONOMICO, "Valija de mano");
 		
 		double precioEsperado = 235000.99 - (235000.99 * 0.1);
 		double precioCalculado = boletoEconomico.calcularPrecioBoleto();
@@ -135,7 +135,7 @@ public class TestGestionDeVuelo {
 	@Test
 	public void test11_queCalculeElPrecioDeBoletoEconomicoSiNOSuperaMonto() {
 		Pasajero pasajero = new Pasajero("Axel", "Perez", 39345678);
-		Economica boletoEconomico = new Economica(988, 38, 24999.87, "Salta",aerolinea,pasajero, miAvion, miVuelo, TipoBoleto.ECONOMICO, "Valija de mano");
+		Economica boletoEconomico = new Economica(988, 38, 24999.87, "Salta",aerolinea,pasajero, nuevoAvion, miVuelo, TipoBoleto.ECONOMICO, "Valija de mano");
 		
 		double precioEsperado = 24999.87 * 1.05;
 		double precioCalculado = boletoEconomico.calcularPrecioBoleto();
