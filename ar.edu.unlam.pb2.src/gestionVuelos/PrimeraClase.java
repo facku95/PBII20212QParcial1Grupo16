@@ -4,8 +4,8 @@ public class PrimeraClase extends Boletos {
 	private Integer cantidad_bebidas, cantidad_comidas;
 
 	public PrimeraClase(Integer id, Integer asiento, Double precio, String destino, Aerolinea aerolinea, Avion avion,
-			Vuelo vuelo, Pasajero pasajero, Integer bebidas, Integer comidas) {
-		super(id, asiento, precio, destino, aerolinea, pasajero, avion, vuelo);
+			Vuelo vuelo,TipoBoleto tipoBoleto, Pasajero pasajero, Integer bebidas, Integer comidas) {
+		super(id, asiento, precio, destino, aerolinea, pasajero, avion, vuelo, tipoBoleto);
 		this.cantidad_bebidas = bebidas;
 		this.cantidad_comidas = comidas;
 	}

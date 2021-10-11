@@ -54,7 +54,7 @@ public class AdministrarAereolinea {
 				break;
 			case 2:
 				System.out.println("REGISTRAR PASAJEROS");
-				System.out.println("Ingresar nombre");
+				System.out.println("Ingresar Nombre");
 				System.out.println("Ingresar Apellido:");
 				System.out.println("Ingresar dni:");
 				

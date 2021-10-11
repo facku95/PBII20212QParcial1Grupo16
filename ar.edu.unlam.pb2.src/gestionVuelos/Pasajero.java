@@ -5,7 +5,6 @@ public class Pasajero {
 	private Integer dni;
 
 	public Pasajero(String nombre, String apellido, Integer dni) {
-		super();
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.dni = dni;

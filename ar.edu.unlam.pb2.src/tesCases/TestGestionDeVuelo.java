@@ -4,8 +4,12 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import gestionVuelos.Aerolinea;
 import gestionVuelos.Avion;
+import gestionVuelos.Boletos;
+import gestionVuelos.ClaseBusiness;
 import gestionVuelos.Pasajero;
+import gestionVuelos.TipoBoleto;
 import gestionVuelos.Vuelo;
 
 public class TestGestionDeVuelo {
@@ -50,5 +54,38 @@ public class TestGestionDeVuelo {
 		Boolean capacidadDisponible = vuelo.verificarCapacidadAvionDelVuelo(miAvion);
 		
 		assertEquals(valorEsperado, capacidadDisponible);
+	}
+	
+	@Test
+	public void test05_queValideTipoDeBoletoClaseBusiness() {
+		Aerolinea aerolinea = new Aerolinea("Flybondi", 372453672);
+		Pasajero pasajero = new Pasajero("Rodrigo", "Rodriguez", 21345678);
+		Pasajero[] arrPasajero = {pasajero};
+		Avion avion = new Avion("Boeing 11", 60);
+		Vuelo vuelo = new Vuelo(011, 60, 23, misPasajeros, "Mendoza", avion);
+		ClaseBusiness boleto = new ClaseBusiness(101, 05, 20399.00, "Mendoza", aerolinea, pasajero, avion, vuelo,TipoBoleto.BUSINESS,2);
+		TipoBoleto tipoBoletoEsperado = TipoBoleto.BUSINESS;
+		
+		assertEquals(tipoBoletoEsperado, boleto.getTipoBoleto());
+		
+	}
+	@Test
+	public void test06_queCalculeElPrecioDelBoletoBusiness() {
+		Aerolinea aerolinea = new Aerolinea("Flybondi", 372453672);
+		Pasajero pasajero = new Pasajero("Rodrigo", "Rodriguez", 21345678);
+		Pasajero[] arrPasajero = {pasajero};
+		Avion avion = new Avion("Boeing 11", 60);
+		Vuelo vuelo = new Vuelo(011, 60, 23, misPasajeros, "Mendoza", avion);
+		ClaseBusiness boletoBusiness = new ClaseBusiness(101, 05, 20399.00, "Mendoza", aerolinea, pasajero, avion, vuelo,TipoBoleto.BUSINESS,2);
+		
+		double precioEsperado = 20399.00 * 1.25;
+		double precioCalculado = boletoBusiness.calcularPrecioBoleto();
+		
+		assertEquals(precioEsperado, precioCalculado,2);
+		System.out.println(boletoBusiness);
+	}
+	
+	public void test() {
+		
 	}
 }
