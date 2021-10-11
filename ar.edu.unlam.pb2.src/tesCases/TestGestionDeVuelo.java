@@ -17,11 +17,11 @@ public class TestGestionDeVuelo {
 	Aerolinea aerolinea = new Aerolinea("Flybondi", 372453672);
 	Avion miAvion = new Avion("Boeing 737", 200);
 	Pasajero[] misPasajeros = { new Pasajero("Juan", "Perez", 12345678) };
-	Vuelo miVuelo = new Vuelo(1234, 200, 198, misPasajeros, "Sydey", miAvion);
+	Vuelo miVuelo = new Vuelo(1234, "Sydey", miAvion);
 
 	@Test
 	public void test01_queMeVerifiSiLaCapacidadDelAvionCoincideConLaCapacidadDelVuelo() {
-		Vuelo vuelo = new Vuelo(1234, 199, 198, misPasajeros, "Sydey", miAvion);
+		Vuelo vuelo = new Vuelo(1234, "Sydey", miAvion);
 		Boolean resultadoEsperado = true;
 		Boolean capacidadDisponible = vuelo.verificarCapacidadAvionDelVuelo(miAvion);
 
@@ -40,7 +40,7 @@ public class TestGestionDeVuelo {
 	@Test
 	public void test03_queMeVerifiqueQueNoHayAsientoDisponible() {
 		Avion avion = new Avion("Boeing 123", 1);
-		Vuelo miVueloLleno = new Vuelo(4567, 1, 1, misPasajeros, "Sydney", avion);
+		Vuelo miVueloLleno = new Vuelo(4567, "Sydney", avion);
 		Boolean vueloDisponible = false;
 		Boolean asientoNoDisponible = miVueloLleno.verificarCapacidadAvionDelVuelo(avion);
 
@@ -50,7 +50,7 @@ public class TestGestionDeVuelo {
 // Este metodo me permitiria conocer si puedo registrar un vuelo con determinado avion
 	@Test
 	public void test04_queVeriqueQueLaCapacidadDelAvionNoCoincideConLaDelVuelo() {
-		Vuelo vuelo = new Vuelo(1234, 201, 198, misPasajeros, "Sydey", miAvion);
+		Vuelo vuelo = new Vuelo(1234, "Sydey", miAvion);
 		Boolean valorEsperado = false;
 		Boolean capacidadDisponible = vuelo.verificarCapacidadAvionDelVuelo(miAvion);
 
@@ -61,9 +61,8 @@ public class TestGestionDeVuelo {
 	public void test05_queValideTipoDeBoletoClaseBusiness() {
 		Aerolinea aerolinea = new Aerolinea("Flybondi", 372453672);
 		Pasajero pasajero = new Pasajero("Rodrigo", "Rodriguez", 21345678);
-		Pasajero[] arrPasajero = { pasajero };
 		Avion avion = new Avion("Boeing 11", 60);
-		Vuelo vuelo = new Vuelo(011, 60, 23, arrPasajero, "Mendoza", avion);
+		Vuelo vuelo = new Vuelo(011, "Mendoza", avion);
 		Business boleto = new Business(101, 05, 20399.00, "Mendoza", aerolinea, pasajero, avion, vuelo,
 				TipoBoleto.BUSINESS, 2);
 		TipoBoleto tipoBoletoEsperado = TipoBoleto.BUSINESS;
@@ -76,9 +75,8 @@ public class TestGestionDeVuelo {
 	public void test06_queCalculeElPrecioDelBoletoBusiness() {
 		Aerolinea aerolinea = new Aerolinea("Flybondi", 372453672);
 		Pasajero pasajero = new Pasajero("Rodrigo", "Rodriguez", 21345678);
-		Pasajero[] arrPasajero = { pasajero };
 		Avion avion = new Avion("Boeing 11", 60);
-		Vuelo vuelo = new Vuelo(011, 60, 23, arrPasajero, "Mendoza", avion);
+		Vuelo vuelo = new Vuelo(011, "Mendoza", avion);
 		Business boletoBusiness = new Business(101, 05, 20399.00, "Mendoza", aerolinea, pasajero, avion,
 				vuelo, TipoBoleto.BUSINESS, 2);
 
@@ -92,9 +90,8 @@ public class TestGestionDeVuelo {
 	public void test07_queValideTipoDeBoletoPrimerClase() {
 //		Aerolinea aerolinea = new Aerolinea("Flybondi", 372453672);
 		Pasajero pasajero = new Pasajero("Alejandra", "Rodriguez", 38345678);
-		Pasajero[] arrPasajero = { pasajero };
 		Avion avion = new Avion("Boeing 11", 60);
-		Vuelo vuelo = new Vuelo(011, 60, 23, arrPasajero, "Mendoza", avion);
+		Vuelo vuelo = new Vuelo(011, "Mendoza", avion);
 		PrimeraClase boletoPrimeraClase = new PrimeraClase(101, 05, 20399.00, "Mendoza", aerolinea, avion, vuelo,
 				TipoBoleto.PRIMERA_CLASE, pasajero, 2, 1);
 		TipoBoleto tipoBoletoPrimera = TipoBoleto.PRIMERA_CLASE;
@@ -104,9 +101,8 @@ public class TestGestionDeVuelo {
 	@Test
 	public void test08_queCalculeElPrecioDeBoletoPrimeraClase() {		
 		Pasajero pasajero = new Pasajero("Alejandra", "Rodriguez", 38345678);
-		Pasajero[] arrPasajero = { pasajero };
 		Avion avion = new Avion("Boeing 11", 60);
-		Vuelo vuelo = new Vuelo(011, 60, 23, arrPasajero, "Mendoza", avion);
+		Vuelo vuelo = new Vuelo(011, "Mendoza", avion);
 		PrimeraClase boletoPrimeraClase = new PrimeraClase(101, 05, 20399.00, "Mendoza", aerolinea, avion, vuelo,TipoBoleto.PRIMERA_CLASE, pasajero, 2, 1);
 		
 		double precioEsperado = (20399.00 * 1.25) + 20399.00;

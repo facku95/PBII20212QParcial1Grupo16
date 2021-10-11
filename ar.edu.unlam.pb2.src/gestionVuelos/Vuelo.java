@@ -2,20 +2,19 @@ package gestionVuelos;
 
 public class Vuelo {
 	private Integer id;
-	private Integer numMaxPasajeros;
-	private Integer numActualPasajeros;
+	private Avion avion;
+	private Integer numMaxPasajeros=avion.getNumero_asientos();
+	private Integer numActualPasajeros=0;
     private Pasajero[] listaPasajeros;
 	private String destino;
-	private Avion avion;
+	
 
-	public Vuelo(Integer id, Integer numMaxPasajeros, Integer numActualPasajeros, Pasajero[] pasajero, String destino, Avion avion) {
+	public Vuelo(Integer id, String destino, Avion avion) {
 
 		this.id = id;
-		this.numMaxPasajeros = numMaxPasajeros;
-		this.numActualPasajeros = 0;
-		this.listaPasajeros = new Pasajero[numMaxPasajeros];
 		this.destino = destino;
 		this.avion = avion;
+		numActualPasajeros++;
 	}
 	
 	public void insertarPasajero(Pasajero pasajero) {
