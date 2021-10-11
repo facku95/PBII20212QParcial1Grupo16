@@ -1,77 +1,104 @@
 package gestionVuelos;
 
-public class Boletos {
-private Integer id,asiento;
-private Double precio;
-private String destino;
-private Aerolinea aerolinea;
-private Pasajero pasajero;
-private Avion avion;
+public abstract class Boletos {
+	private Integer id, asiento;
+	private Double precio;
+	private String destino;
+	private Aerolinea aerolinea;
+	private Pasajero pasajero;
+	private Avion avion;
+	private Vuelo vuelo;
+	private TipoBoleto tipoBoleto;
 
-public Boletos(Integer id, Integer asiento, Double precio, String destino
-			   ,Aerolinea aerolinea, Pasajero pasajero, Avion avion) {
-	this.id = id;
-	this.asiento = asiento;
-	this.precio = precio;
-	this.destino = destino;
-	this.aerolinea = aerolinea;
-	this.pasajero = pasajero;
-}
-public Boolean VerificarAsientoDisponible(Integer asiento) {
-	Boolean estado=false;
-	if(asiento<=avion.getNumero_asientos()) {
-		estado=true;
-		return estado;
+	public Boletos(Integer id, Integer asiento, Double precio, String destino, Aerolinea aerolinea, Pasajero pasajero,
+			Avion avion, Vuelo vuelo, TipoBoleto tipoBoleto) {
+		this.id = id;
+		this.asiento = asiento;
+		this.precio = precio;
+		this.destino = destino;
+		this.aerolinea = aerolinea;
+		this.pasajero = pasajero;
+		this.avion = avion;
+		this.vuelo = vuelo;
+		this.tipoBoleto = tipoBoleto;
 	}
-	return estado;
-}
+	
+	public abstract double calcularPrecioBoleto();
+	
+	public Integer getId() {
+		return id;
+	}
 
+	public void setId(Integer id) {
+		this.id = id;
+	}
 
+	public Integer getAsiento() {
+		return asiento;
+	}
 
+	public void setAsiento(Integer asiento) {
+		this.asiento = asiento;
+	}
 
+	public String getDestino() {
+		return destino;
+	}
 
+	public void setDestino(String destino) {
+		this.destino = destino;
+	}
 
+	public Aerolinea getAerolinea() {
+		return aerolinea;
+	}
 
+	public void setAerolinea(Aerolinea aerolinea) {
+		this.aerolinea = aerolinea;
+	}
 
-public Integer getId() {
-	return id;
-}
+	public Pasajero getPasajero() {
+		return pasajero;
+	}
 
-public void setId(Integer id) {
-	this.id = id;
-}
+	public void setPasajero(Pasajero pasajero) {
+		this.pasajero = pasajero;
+	}
 
-public Integer getAsiento() {
-	return asiento;
-}
+	public Double getPrecio() {
+		return precio;
+	}
 
-public void setAsiento(Integer asiento) {
-	this.asiento = asiento;
-}
+	public void setPrecio(Double precio) {
+		this.precio = precio;
+	}
 
-public String getDestino() {
-	return destino;
-}
+	public Avion getAvion() {
+		return avion;
+	}
 
-public void setDestino(String destino) {
-	this.destino = destino;
-}
+	public void setAvion(Avion avion) {
+		this.avion = avion;
+	}
 
-public Aerolinea getAerolinea() {
-	return aerolinea;
-}
+	public Vuelo getVuelo() {
+		return vuelo;
+	}
 
-public void setAerolinea(Aerolinea aerolinea) {
-	this.aerolinea = aerolinea;
-}
+	public void setVuelo(Vuelo vuelo) {
+		this.vuelo = vuelo;
+	}
 
-public Pasajero getPasajero() {
-	return pasajero;
-}
+	public TipoBoleto getTipoBoleto() {
+		return tipoBoleto;
+	}
 
-public void setPasajero(Pasajero pasajero) {
-	this.pasajero = pasajero;
-}
-
-
+	public void setTipoBoleto(TipoBoleto tipoBoleto) {
+		this.tipoBoleto = tipoBoleto;
+	}
+	
+	@Override
+	public String toString() {
+		return "Tipo Boleto: "+tipoBoleto+ " Destino: "+destino+ " Aerolinea: "+aerolinea +" Pasajero: "+ pasajero.getNombre()+" "+ pasajero.getApellido()+" "+ pasajero.getDni();
+	}
 }
