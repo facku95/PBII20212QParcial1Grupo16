@@ -9,6 +9,7 @@ import gestionVuelos.Avion;
 import gestionVuelos.Boletos;
 import gestionVuelos.ClaseBusiness;
 import gestionVuelos.Pasajero;
+import gestionVuelos.PrimeraClase;
 import gestionVuelos.TipoBoleto;
 import gestionVuelos.Vuelo;
 
@@ -45,47 +46,73 @@ public class TestGestionDeVuelo {
 
 		assertEquals(vueloDisponible, asientoNoDisponible);
 	}
-	
+
 // Este metodo me permitiria conocer si puedo registrar un vuelo con determinado avion
 	@Test
 	public void test04_queVeriqueQueLaCapacidadDelAvionNoCoincideConLaDelVuelo() {
 		Vuelo vuelo = new Vuelo(1234, 201, 198, misPasajeros, "Sydey", miAvion);
 		Boolean valorEsperado = false;
 		Boolean capacidadDisponible = vuelo.verificarCapacidadAvionDelVuelo(miAvion);
-		
+
 		assertEquals(valorEsperado, capacidadDisponible);
 	}
-	
+
 	@Test
 	public void test05_queValideTipoDeBoletoClaseBusiness() {
 		Aerolinea aerolinea = new Aerolinea("Flybondi", 372453672);
 		Pasajero pasajero = new Pasajero("Rodrigo", "Rodriguez", 21345678);
-		Pasajero[] arrPasajero = {pasajero};
+		Pasajero[] arrPasajero = { pasajero };
 		Avion avion = new Avion("Boeing 11", 60);
-		Vuelo vuelo = new Vuelo(011, 60, 23, misPasajeros, "Mendoza", avion);
-		ClaseBusiness boleto = new ClaseBusiness(101, 05, 20399.00, "Mendoza", aerolinea, pasajero, avion, vuelo,TipoBoleto.BUSINESS,2);
+		Vuelo vuelo = new Vuelo(011, 60, 23, arrPasajero, "Mendoza", avion);
+		ClaseBusiness boleto = new ClaseBusiness(101, 05, 20399.00, "Mendoza", aerolinea, pasajero, avion, vuelo,
+				TipoBoleto.BUSINESS, 2);
 		TipoBoleto tipoBoletoEsperado = TipoBoleto.BUSINESS;
-		
+
 		assertEquals(tipoBoletoEsperado, boleto.getTipoBoleto());
-		
+
 	}
+
 	@Test
 	public void test06_queCalculeElPrecioDelBoletoBusiness() {
 		Aerolinea aerolinea = new Aerolinea("Flybondi", 372453672);
 		Pasajero pasajero = new Pasajero("Rodrigo", "Rodriguez", 21345678);
-		Pasajero[] arrPasajero = {pasajero};
+		Pasajero[] arrPasajero = { pasajero };
 		Avion avion = new Avion("Boeing 11", 60);
-		Vuelo vuelo = new Vuelo(011, 60, 23, misPasajeros, "Mendoza", avion);
-		ClaseBusiness boletoBusiness = new ClaseBusiness(101, 05, 20399.00, "Mendoza", aerolinea, pasajero, avion, vuelo,TipoBoleto.BUSINESS,2);
-		
+		Vuelo vuelo = new Vuelo(011, 60, 23, arrPasajero, "Mendoza", avion);
+		ClaseBusiness boletoBusiness = new ClaseBusiness(101, 05, 20399.00, "Mendoza", aerolinea, pasajero, avion,
+				vuelo, TipoBoleto.BUSINESS, 2);
+
 		double precioEsperado = 20399.00 * 1.25;
 		double precioCalculado = boletoBusiness.calcularPrecioBoleto();
-		
-		assertEquals(precioEsperado, precioCalculado,2);
+
+		assertEquals(precioEsperado, precioCalculado, 2);
 		System.out.println(boletoBusiness);
 	}
-	
-	public void test() {
+	@Test
+	public void test07_queValideTipoDeBoletoPrimerClase() {
+		Aerolinea aerolinea = new Aerolinea("Flybondi", 372453672);
+		Pasajero pasajero = new Pasajero("Alejandra", "Rodriguez", 38345678);
+		Pasajero[] arrPasajero = { pasajero };
+		Avion avion = new Avion("Boeing 11", 60);
+		Vuelo vuelo = new Vuelo(011, 60, 23, arrPasajero, "Mendoza", avion);
+		PrimeraClase boletoPrimeraClase = new PrimeraClase(101, 05, 20399.00, "Mendoza", aerolinea, avion, vuelo,
+				TipoBoleto.PRIMERA_CLASE, pasajero, 2, 1);
+		TipoBoleto tipoBoletoPrimera = TipoBoleto.PRIMERA_CLASE;
+
+		assertEquals(tipoBoletoPrimera, boletoPrimeraClase.getTipoBoleto());
+	}
+	@Test
+	public void test08_queCalculeElPrecioDeBoletoPrimeraClase() {
+		Aerolinea aerolinea = new Aerolinea("Flybondi", 372453672);
+		Pasajero pasajero = new Pasajero("Alejandra", "Rodriguez", 38345678);
+		Pasajero[] arrPasajero = { pasajero };
+		Avion avion = new Avion("Boeing 11", 60);
+		Vuelo vuelo = new Vuelo(011, 60, 23, arrPasajero, "Mendoza", avion);
+		PrimeraClase boletoPrimeraClase = new PrimeraClase(101, 05, 20399.00, "Mendoza", aerolinea, avion, vuelo,TipoBoleto.PRIMERA_CLASE, pasajero, 2, 1);
 		
+		double precioEsperado = (20399.00 * 1.25) + 20399.00;
+		double precioCalculado = boletoPrimeraClase.calcularPrecioBoleto();
+		
+		assertEquals(precioEsperado, precioCalculado,2);
 	}
 }

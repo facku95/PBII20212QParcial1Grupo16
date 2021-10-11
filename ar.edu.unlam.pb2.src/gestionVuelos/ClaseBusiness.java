@@ -7,7 +7,6 @@ public class ClaseBusiness extends Boletos {
 			Pasajero pasajero, Avion avion, Vuelo vuelo, TipoBoleto tipoBoleto, Integer cantBebidas) {
 		super(id, asiento, precio, destino, aerolinea, pasajero, avion, vuelo, tipoBoleto);
 		this.cantidad_bebidas = cantBebidas;
-
 		setTipoBoleto(TipoBoleto.BUSINESS);
 	}
 
