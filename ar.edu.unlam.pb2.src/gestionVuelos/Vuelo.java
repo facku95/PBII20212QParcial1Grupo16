@@ -1,59 +1,113 @@
 package gestionVuelos;
 
 public class Vuelo {
-private Integer id;
-static Integer nPasajeros=0;
-private String destino;
-private Avion avion;
+	private Integer id;
+	private Integer numMaxPasajeros;
+	private Integer numActualPasajeros;
+    private Pasajero[] listaPasajeros;
+	private String destino;
+	private Avion avion;
 
-public Vuelo(Integer id, Integer nPasajeros,
-			 String destino, Avion avion) {
-	super();
-	this.id = id;
-	this.nPasajeros = nPasajeros++;
-	this.destino = destino;
-	this.avion = avion;
-}
+	public Vuelo(Integer id, Integer numMaxPasajeros, Integer numActualPasajeros, Pasajero[] pasajero, String destino, Avion avion) {
 
-public Boolean verificarAsientosDisponibles(){
-	Boolean estado=false;
-	if(nPasajeros<=avion.getNumero_asientos()) {
-		estado=true;
+		this.id = id;
+		this.numMaxPasajeros = numMaxPasajeros;
+		this.numActualPasajeros = 0;
+		this.listaPasajeros = new Pasajero[numMaxPasajeros];
+		this.destino = destino;
+		this.avion = avion;
 	}
-	return estado;
+	
+	public void insertarPasajero(Pasajero pasajero) {
+		listaPasajeros[numActualPasajeros] = pasajero;
+		numActualPasajeros++;
+	}
+	
+	public Integer obtenerCantidadDePasajeros() {
+		Integer numPasajeros = 0;
+		for (int i = 0; i < listaPasajeros.length; i++) {
+			if(listaPasajeros[i] != null) 
+				numPasajeros++;
+		}
+		return numPasajeros;
+	}
+	
+	//metodo que verifica capacidad max avion vs capacidad vuelo
+	public Boolean verificarCapacidadAvionDelVuelo(Avion cantAsiento) {
+		Boolean estado = false;
+		if (numMaxPasajeros < cantAsiento.getNumero_asientos()) {
+			estado = true;
+			numMaxPasajeros++;
+		}
+		return estado;
 	}
 
+	public Boolean verificarDisponibilidadAsientoDelVuelo(Avion datoAvion, Pasajero datoPasajero) {
+		Boolean sePudoComprar = false;
+		if(numActualPasajeros < datoAvion.getNumero_asientos()) {
+			sePudoComprar = true;
+			insertarPasajero(datoPasajero);
+		}
+		return sePudoComprar;
+	}
 
-public Integer getId() {
-	return id;
-}
+	public Integer getId() {
+		return id;
+	}
 
-public void setId(Integer id) {
-	this.id = id;
-}
+	public void setId(Integer id) {
+		this.id = id;
+	}
 
-public static Integer getnPasajeros() {
-	return nPasajeros;
-}
+	public Integer getnPasajeros() {
+		return numMaxPasajeros;
+	}
 
-public static void setnPasajeros(Integer nPasajeros) {
-	Vuelo.nPasajeros = nPasajeros;
-}
+	public void setnPasajeros(Integer nPasajeros) {
+		this.numMaxPasajeros = nPasajeros;
+	}
 
-public String getDestino() {
-	return destino;
-}
+	public String getDestino() {
+		return destino;
+	}
 
-public void setDestino(String destino) {
-	this.destino = destino;
-}
+	public void setDestino(String destino) {
+		this.destino = destino;
+	}
 
-public Avion getAvion() {
-	return avion;
-}
+	public Avion getAvion() {
+		return avion;
+	}
 
-public void setAvion(Avion avion) {
-	this.avion = avion;
-}
+	public void setAvion(Avion avion) {
+		this.avion = avion;
+	}
+	public Integer getNumMaxPasajeros() {
+		return numMaxPasajeros;
+	}
 
+	public void setNumMaxPasajeros(Integer numMaxPasajeros) {
+		this.numMaxPasajeros = numMaxPasajeros;
+	}
+
+	public Integer getNumActualPasajeros() {
+		return numActualPasajeros;
+	}
+
+	public void setNumActualPasajeros(Integer numActualPasajeros) {
+		this.numActualPasajeros = numActualPasajeros;
+	}
+
+	public Pasajero[] getListaPasajeros() {
+		return listaPasajeros;
+	}
+
+	public void setListaPasajeros(Pasajero[] listaPasajeros) {
+		this.listaPasajeros = listaPasajeros;
+	}
+	
+	@Override
+	public String toString() {
+		return "Vuelo nº " + id + " Cant. Max. de pasajeros: " + numMaxPasajeros +" Cant. Actual Pasajeros: "+ numActualPasajeros+" Pasajero: "+ getListaPasajeros() +" Destino: " + destino + " Avion: " + avion;
+	}
 }
