@@ -1,21 +1,11 @@
 package gestionVuelos;
 
-public class Business extends Boletos {
-	private Integer cantidad_bebidas;
+public class Business extends Boleto {
 
-	public Business(Integer id, Integer asiento, Double precio, String destino, Aerolinea aerolinea,
-			Pasajero pasajero, Avion avion, Vuelo vuelo, TipoBoleto tipoBoleto, Integer cantBebidas) {
-		super(id, asiento, precio, destino, aerolinea, pasajero, avion, vuelo, tipoBoleto);
-		this.cantidad_bebidas = cantBebidas;
+	public Business( Double precio, String destino, Aerolinea aerolinea,
+			Pasajero pasajero,Vuelo vuelo, TipoBoleto tipoBoleto) {
+		super( precio, destino, aerolinea, pasajero, vuelo, tipoBoleto);
 		setTipoBoleto(TipoBoleto.BUSINESS);
-	}
-
-	public Integer getCantidad_bebidas() {
-		return cantidad_bebidas;
-	}
-
-	public void setCantidad_bebidas(Integer cantidad_bebidas) {
-		this.cantidad_bebidas = cantidad_bebidas;
 	}
 	
 	@Override

@@ -1,7 +1,6 @@
 package gestionVuelos;
 
-public abstract class Boletos {
-	private Integer id, asiento;
+public abstract class Boleto {
 	private Double precio;
 	private String destino;
 	private Aerolinea aerolinea;
@@ -10,36 +9,17 @@ public abstract class Boletos {
 	private Vuelo vuelo;
 	private TipoBoleto tipoBoleto;
 
-	public Boletos(Integer id, Integer asiento, Double precio, String destino, Aerolinea aerolinea, Pasajero pasajero,
-			Avion avion, Vuelo vuelo, TipoBoleto tipoBoleto) {
-		this.id = id;
-		this.asiento = asiento;
+	public Boleto(Double precio, String destino, Aerolinea aerolinea, Pasajero pasajero, Vuelo vuelo, TipoBoleto tipoBoleto) {
 		this.precio = precio;
 		this.destino = destino;
 		this.aerolinea = aerolinea;
 		this.pasajero = pasajero;
-		this.avion = avion;
+		this.avion = vuelo.getAvion();
 		this.vuelo = vuelo;
 		this.tipoBoleto = tipoBoleto;
 	}
 	
 	public abstract double calcularPrecioBoleto();
-	
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
-
-	public Integer getAsiento() {
-		return asiento;
-	}
-
-	public void setAsiento(Integer asiento) {
-		this.asiento = asiento;
-	}
 
 	public String getDestino() {
 		return destino;
