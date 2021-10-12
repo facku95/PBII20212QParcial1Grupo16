@@ -14,7 +14,7 @@ import gestionVuelos.Vuelo;
 public class TestVentaBoleto {
 
 		@Test
-		public void queLosBoletosTenganTodosLosDatosDelVueloAerolineaYPasajero() {
+		public void queLosBoletosTenganLosDatosDelVueloAerolineaYPasajero() {
 			Avion miAvion = new Avion("Boeing 737", 200);
 			Vuelo miVuelo = new Vuelo(1234, "Sydey", miAvion, 100.4);
 			Aerolinea aerolinea = new Aerolinea("Aerolineas Argentinas", 102938);

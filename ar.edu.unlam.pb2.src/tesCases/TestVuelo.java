@@ -9,6 +9,20 @@ import gestionVuelos.Pasajero;
 import gestionVuelos.Vuelo;
 
 public class TestVuelo {
+	
+	@Test
+	public void queElVueloTengaLosDatosDelAvionYDelMismoVuelo() {
+		String destino = "Sydey";
+		Double precioBase = 100.4;
+		
+		Avion miAvion = new Avion("Boeing 737", 200);
+		Vuelo vuelo = new Vuelo(1234, destino, miAvion, precioBase);
+		
+		assertEquals(vuelo.getAvion(), miAvion);
+		assertEquals(vuelo.getDestino(), destino);
+		assertEquals(vuelo.getPrecioBase(), precioBase);
+	}
+	
 	@Test
 	public void queLaCantidadDePasajerosIniciaEn0() {
 		Avion miAvion = new Avion("Boeing 737", 200);
