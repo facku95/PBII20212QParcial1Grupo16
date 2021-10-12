@@ -1,12 +1,10 @@
 package gestionVuelos;
 
-public class Economica extends Boletos {
+public class Economica extends Boleto {
 	private String tipoValija;
 	
-	public Economica(Integer id, Integer asiento, Double precio, String destino, Aerolinea aerolinea, Pasajero pasajero,
-			Avion avion, Vuelo vuelo, TipoBoleto tipoBoleto, String tipoValija) {
-		super(id, asiento, precio, destino, aerolinea, pasajero, avion, vuelo, tipoBoleto);
-		this.tipoValija = tipoValija;
+	public Economica(Double precio, String destino, Aerolinea aerolinea, Pasajero pasajero, Vuelo vuelo, TipoBoleto tipoBoleto) {
+		super(precio, destino, aerolinea, pasajero, vuelo, tipoBoleto);
 		setTipoBoleto(TipoBoleto.ECONOMICO);
 	}
 
